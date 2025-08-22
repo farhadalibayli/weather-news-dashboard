@@ -1,0 +1,623 @@
+# 🌟 Workable - Modern Dashboard Platform
+
+<div align="center">
+
+![Workable Logo](https://img.shields.io/badge/Workable-Dashboard-blue?style=for-the-badge&logo=react)
+![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.5.5-green?style=for-the-badge&logo=spring)
+![React](https://img.shields.io/badge/React-19-blue?style=for-the-badge&logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)
+
+**A modern, full-stack dashboard application with real-time weather, news, and task management**
+
+[🚀 Live Demo](#) • [📖 Documentation](#) • [🐛 Report Bug](#) • [💡 Request Feature](#)
+
+</div>
+
+---
+
+## 📋 Table of Contents
+
+- [✨ Features](#-features)
+- [🏗 Architecture](#-architecture)
+- [🚀 Quick Start](#-quick-start)
+- [🛠 Tech Stack](#-tech-stack)
+- [📁 Project Structure](#-project-structure)
+- [🔧 Configuration](#-configuration)
+- [📚 API Documentation](#-api-documentation)
+- [🎨 UI/UX Features](#-uiux-features)
+- [🔒 Security](#-security)
+- [🧪 Testing](#-testing)
+- [🚀 Deployment](#-deployment)
+- [🤝 Contributing](#-contributing)
+- [📄 License](#-license)
+
+---
+
+## ✨ Features
+
+### 🌦 **Real-Time Weather**
+- **Automatic Location Detection** - Uses browser geolocation API
+- **OpenWeatherMap Integration** - Real weather data from 200,000+ cities
+- **Location Accuracy Display** - Shows GPS accuracy in meters
+- **Manual City Search** - Fallback for location permission denied
+- **Weather Details** - Temperature, humidity, wind speed, conditions
+- **Beautiful Weather Icons** - Dynamic weather representation
+
+### 📰 **Live News Feed**
+- **NewsAPI Integration** - Real-time news from global sources
+- **Category Filtering** - Technology, Business, Sports, Entertainment, Health, Science, Politics
+- **Pagination Support** - Efficient loading with "Load More" functionality
+- **Responsive Grid Layout** - Optimized for all screen sizes
+- **Source Attribution** - Proper news source linking
+- **Caching System** - Reduces API calls and improves performance
+
+### ✅ **Smart Todo Management**
+- **User-Specific Tasks** - Each user sees only their own todos
+- **Priority Levels** - LOW, MEDIUM, HIGH with color coding
+- **Real-time Updates** - Instant status changes and modifications
+- **Persistent Storage** - Data saved to database with user association
+- **Filter Options** - All, Active, Completed views
+- **Inline Editing** - Click to edit with keyboard shortcuts
+
+### 🔐 **Advanced Authentication**
+- **JWT Token Security** - Secure, stateless authentication
+- **Email-Based Login** - Simple email-only authentication
+- **Account Management** - Email change with data transfer
+- **Session Persistence** - Automatic login restoration
+- **Protected Routes** - Secure access to user-specific data
+
+### 🎨 **Modern UI/UX**
+- **Responsive Design** - Works perfectly on mobile, tablet, and desktop
+- **Dark/Light Theme Ready** - Prepared for theme switching
+- **Smooth Animations** - Professional transitions and micro-interactions
+- **Loading States** - Skeleton screens and progress indicators
+- **Error Handling** - User-friendly error messages and recovery
+- **Accessibility** - ARIA labels and keyboard navigation
+
+---
+
+## 🏗 Architecture
+
+```
+┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+│   React Frontend│    │  Spring Backend │    │   MySQL Database│
+│                 │    │                 │    │                 │
+│ • TypeScript    │◄──►│ • RESTful APIs  │◄──►│ • User Data     │
+│ • Tailwind CSS  │    │ • JWT Security  │    │ • Todo Items    │
+│ • Geolocation   │    │ • External APIs │    │ • Weather Cache │
+│ • Real-time UI  │    │ • Data Caching  │    │ • News Cache    │
+└─────────────────┘    └─────────────────┘    └─────────────────┘
+```
+
+### **System Flow**
+1. **Frontend** - React SPA with TypeScript and Tailwind CSS
+2. **Backend** - Spring Boot REST API with JWT authentication
+3. **Database** - MySQL for persistent data storage
+4. **External APIs** - OpenWeatherMap and NewsAPI for real data
+5. **Caching** - Intelligent caching to reduce API calls
+
+---
+
+## 🚀 Quick Start
+
+### **Prerequisites**
+- Java 17+ 
+- Node.js 18+
+- MySQL 8.0+
+- Maven 3.6+
+
+### **1. Clone the Repository**
+```bash
+git clone https://github.com/yourusername/workable.git
+cd workable
+```
+
+### **2. Database Setup**
+```sql
+CREATE DATABASE workable_db;
+CREATE USER 'workable_user'@'localhost' IDENTIFIED BY 'your_password';
+GRANT ALL PRIVILEGES ON workable_db.* TO 'workable_user'@'localhost';
+FLUSH PRIVILEGES;
+```
+
+### **3. Backend Configuration**
+```bash
+cd workable-backend
+```
+
+Update `src/main/resources/application.properties`:
+```properties
+# Database
+spring.datasource.url=jdbc:mysql://localhost:3306/workable_db
+spring.datasource.username=workable_user
+spring.datasource.password=your_password
+
+# API Keys (Get free keys from the links below)
+app.weather.api-key=YOUR_OPENWEATHERMAP_API_KEY
+app.news.api-key=YOUR_NEWSAPI_KEY
+```
+
+**Get Free API Keys:**
+- 🌦 [OpenWeatherMap API](https://openweathermap.org/api) - Weather data
+- 📰 [NewsAPI](https://newsapi.org/) - News articles
+
+### **4. Start Backend**
+```bash
+mvn spring-boot:run
+```
+Backend runs on: `http://localhost:8080`
+
+### **5. Start Frontend**
+```bash
+cd workable-frontend
+npm install
+npm start
+```
+Frontend runs on: `http://localhost:3000`
+
+### **6. First Login**
+- Open `http://localhost:3000`
+- Enter any email address (e.g., `user@example.com`)
+- System will automatically create your account
+- Start using the dashboard!
+
+---
+
+## 🛠 Tech Stack
+
+### **Frontend**
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| **React** | 19.0.0 | UI Framework |
+| **TypeScript** | 5.0.0 | Type Safety |
+| **Tailwind CSS** | 3.3.0 | Styling |
+| **React Router** | 6.8.0 | Navigation |
+| **Axios** | 1.4.0 | HTTP Client |
+
+### **Backend**
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| **Spring Boot** | 3.5.5 | Framework |
+| **Spring Security** | 6.1.0 | Authentication |
+| **Spring Data JPA** | 3.1.0 | Database Access |
+| **MySQL** | 8.0.0 | Database |
+| **JWT** | 0.11.5 | Token Authentication |
+| **Lombok** | 1.18.26 | Code Generation |
+
+### **External APIs**
+| Service | Purpose | Rate Limit |
+|---------|---------|------------|
+| **OpenWeatherMap** | Weather Data | 1000 calls/day (free) |
+| **NewsAPI** | News Articles | 1000 calls/day (free) |
+
+---
+
+## 📁 Project Structure
+
+```
+workable/
+├── 📁 workable-backend/          # Spring Boot Backend
+│   ├── 📁 src/main/java/
+│   │   └── 📁 com/workable/workablebackend/
+│   │       ├── 📁 config/        # Configuration classes
+│   │       ├── 📁 controller/    # REST controllers
+│   │       ├── 📁 dto/          # Data Transfer Objects
+│   │       ├── 📁 exception/    # Exception handling
+│   │       ├── 📁 model/        # Entity models
+│   │       ├── 📁 repository/   # Data access layer
+│   │       ├── 📁 security/     # Security configuration
+│   │       └── 📁 service/      # Business logic
+│   ├── 📁 src/main/resources/
+│   │   └── application.properties
+│   └── pom.xml
+│
+├── 📁 workable-frontend/         # React Frontend
+│   ├── 📁 src/
+│   │   ├── 📁 components/       # React components
+│   │   ├── 📁 contexts/         # React contexts
+│   │   ├── 📁 types/           # TypeScript types
+│   │   └── App.tsx
+│   ├── package.json
+│   └── tsconfig.json
+│
+└── README.md
+```
+
+---
+
+## 🔧 Configuration
+
+### **Environment Variables**
+
+Create `.env` files for sensitive data:
+
+**Backend (.env)**
+```env
+DB_USERNAME=workable_user
+DB_PASSWORD=your_secure_password
+JWT_SECRET=your_jwt_secret_key
+WEATHER_API_KEY=your_openweathermap_key
+NEWS_API_KEY=your_newsapi_key
+```
+
+**Frontend (.env)**
+```env
+REACT_APP_API_URL=http://localhost:8080
+REACT_APP_WEATHER_API_KEY=your_openweathermap_key
+REACT_APP_NEWS_API_KEY=your_newsapi_key
+```
+
+### **Database Configuration**
+```properties
+# MySQL Configuration
+spring.datasource.url=jdbc:mysql://localhost:3306/workable_db
+spring.datasource.username=${DB_USERNAME}
+spring.datasource.password=${DB_PASSWORD}
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=false
+
+# JWT Configuration
+app.jwt-secret=${JWT_SECRET}
+app.jwt-expiration-milliseconds=86400000
+
+# API Configuration
+app.weather.api-key=${WEATHER_API_KEY}
+app.weather.base-url=https://api.openweathermap.org/data/2.5
+app.news.api-key=${NEWS_API_KEY}
+app.news.base-url=https://newsapi.org/v2
+```
+
+---
+
+## 📚 API Documentation
+
+### **Authentication Endpoints**
+
+#### **Register/Login User**
+```http
+POST /api/auth/login
+Content-Type: application/json
+
+{
+  "email": "user@example.com",
+  "password": "password123"
+}
+```
+
+#### **Update Email**
+```http
+PUT /api/auth/update-email
+Authorization: Bearer <jwt_token>
+Content-Type: application/json
+
+{
+  "newEmail": "newuser@example.com"
+}
+```
+
+#### **Check Email Availability**
+```http
+GET /api/auth/check-email?email=user@example.com
+```
+
+### **Todo Endpoints**
+
+#### **Get User Todos**
+```http
+GET /api/todos
+GET /api/todos?completed=true
+Authorization: Bearer <jwt_token>
+```
+
+#### **Create Todo**
+```http
+POST /api/todos
+Authorization: Bearer <jwt_token>
+Content-Type: application/json
+
+{
+  "title": "Complete project",
+  "description": "Finish the implementation",
+  "priority": "HIGH"
+}
+```
+
+#### **Update Todo**
+```http
+PUT /api/todos/{id}
+Authorization: Bearer <jwt_token>
+Content-Type: application/json
+
+{
+  "title": "Updated title",
+  "description": "Updated description",
+  "priority": "MEDIUM"
+}
+```
+
+#### **Toggle Todo Status**
+```http
+PATCH /api/todos/{id}/toggle
+Authorization: Bearer <jwt_token>
+```
+
+#### **Delete Todo**
+```http
+DELETE /api/todos/{id}
+Authorization: Bearer <jwt_token>
+```
+
+### **Weather Endpoints**
+
+#### **Get Weather by City**
+```http
+GET /api/weather?city=London
+```
+
+#### **Get Weather by Coordinates**
+```http
+GET /api/weather?lat=51.5074&lng=-0.1278
+```
+
+### **News Endpoints**
+
+#### **Get All News**
+```http
+GET /api/news?page=0&size=10
+```
+
+#### **Get News by Category**
+```http
+GET /api/news/technology?page=0&size=10
+```
+
+**Available Categories:** `technology`, `business`, `sports`, `entertainment`, `health`, `science`, `politics`
+
+---
+
+## 🎨 UI/UX Features
+
+### **Design System**
+- **Color Palette**: Professional blue and emerald theme
+- **Typography**: Inter font family for readability
+- **Spacing**: Consistent 8px grid system
+- **Shadows**: Subtle elevation with CSS shadows
+- **Animations**: Smooth transitions and micro-interactions
+
+### **Responsive Breakpoints**
+```css
+/* Mobile First Approach */
+sm: 640px   /* Small tablets */
+md: 768px   /* Tablets */
+lg: 1024px  /* Laptops */
+xl: 1280px  /* Desktops */
+2xl: 1536px /* Large screens */
+```
+
+### **Component Library**
+- **Cards**: Rounded corners with subtle shadows
+- **Buttons**: Multiple variants (primary, secondary, danger)
+- **Forms**: Clean input fields with validation
+- **Modals**: Overlay dialogs with backdrop blur
+- **Loading**: Skeleton screens and spinners
+
+---
+
+## 🔒 Security
+
+### **Authentication & Authorization**
+- **JWT Tokens**: Secure, stateless authentication
+- **Password Encryption**: BCrypt hashing
+- **CORS Configuration**: Secure cross-origin requests
+- **Protected Routes**: Role-based access control
+- **Token Expiration**: Configurable session timeout
+
+### **Data Protection**
+- **Input Validation**: Server-side validation
+- **SQL Injection Prevention**: Parameterized queries
+- **XSS Protection**: Content Security Policy
+- **CSRF Protection**: Cross-Site Request Forgery prevention
+- **Rate Limiting**: API request throttling
+
+### **Privacy Features**
+- **User Data Isolation**: Each user sees only their data
+- **Email Uniqueness**: No duplicate email addresses
+- **Account Deletion**: Complete data removal on email change
+- **Session Management**: Secure token handling
+
+---
+
+## 🧪 Testing
+
+### **Backend Testing**
+```bash
+# Run all tests
+mvn test
+
+# Run specific test class
+mvn test -Dtest=UserServiceTest
+
+# Run with coverage
+mvn jacoco:report
+```
+
+### **Frontend Testing**
+```bash
+# Run unit tests
+npm test
+
+# Run with coverage
+npm test -- --coverage
+
+# Run E2E tests
+npm run test:e2e
+```
+
+### **API Testing**
+```bash
+# Test authentication
+curl -X POST http://localhost:8080/api/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"email":"test@example.com","password":"password123"}'
+
+# Test protected endpoint
+curl -X GET http://localhost:8080/api/todos \
+  -H "Authorization: Bearer <your_jwt_token>"
+```
+
+---
+
+## 🚀 Deployment
+
+### **Backend Deployment**
+
+#### **Docker Deployment**
+```dockerfile
+# Dockerfile
+FROM openjdk:17-jdk-slim
+COPY target/workable-backend-*.jar app.jar
+EXPOSE 8080
+ENTRYPOINT ["java","-jar","/app.jar"]
+```
+
+```bash
+# Build and run
+docker build -t workable-backend .
+docker run -p 8080:8080 workable-backend
+```
+
+#### **Cloud Deployment**
+```bash
+# Heroku
+heroku create workable-backend
+git push heroku main
+
+# AWS Elastic Beanstalk
+eb init workable-backend
+eb create workable-backend-prod
+eb deploy
+```
+
+### **Frontend Deployment**
+
+#### **Build for Production**
+```bash
+npm run build
+```
+
+#### **Deploy to Netlify**
+```bash
+# Connect to Netlify
+netlify deploy --prod --dir=build
+```
+
+#### **Deploy to Vercel**
+```bash
+# Install Vercel CLI
+npm i -g vercel
+
+# Deploy
+vercel --prod
+```
+
+### **Environment Setup**
+```bash
+# Production environment variables
+NODE_ENV=production
+REACT_APP_API_URL=https://your-backend-domain.com
+DATABASE_URL=your_production_database_url
+```
+
+---
+
+## 🤝 Contributing
+
+We welcome contributions! Please follow these steps:
+
+### **1. Fork the Repository**
+```bash
+git clone https://github.com/yourusername/workable.git
+cd workable
+```
+
+### **2. Create Feature Branch**
+```bash
+git checkout -b feature/amazing-feature
+```
+
+### **3. Make Changes**
+- Follow the coding standards
+- Add tests for new features
+- Update documentation
+
+### **4. Commit Changes**
+```bash
+git commit -m "feat: add amazing feature"
+```
+
+### **5. Push to Branch**
+```bash
+git push origin feature/amazing-feature
+```
+
+### **6. Create Pull Request**
+- Describe your changes
+- Link related issues
+- Request code review
+
+### **Development Guidelines**
+- **Code Style**: Follow ESLint and Prettier rules
+- **Testing**: Maintain >80% code coverage
+- **Documentation**: Update README for new features
+- **Commits**: Use conventional commit messages
+
+---
+
+## 📄 License
+
+This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) file for details.
+
+```
+MIT License
+
+Copyright (c) 2024 Workable Dashboard
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
+---
+
+## 🙏 Acknowledgments
+
+- **OpenWeatherMap** for weather data API
+- **NewsAPI** for news articles API
+- **Spring Boot** team for the amazing framework
+- **React** team for the UI library
+- **Tailwind CSS** for the utility-first CSS framework
+- **All contributors** who helped make this project better
+
+---
+
+<div align="center">
+
+**Made with ❤️ by the Workable Team**
+
+[⭐ Star this repo](#) • [🐛 Report a bug](#) • [💡 Request a feature](#)
+
+</div>
