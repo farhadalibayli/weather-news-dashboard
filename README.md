@@ -9,6 +9,15 @@
 
 **A modern, full-stack dashboard application with real-time weather, news, and task management**
 
+### About
+A web application with a Spring Boot backend and MySQL database. Features include:
+
+- **Email-Based Authentication**: Simple login using email addresses with automatic account creation
+- **Real-Time Weather**: Shows weather based on detected location or manual city search using OpenWeatherMap API
+- **Live News Feed**: Displays news from various categories using NewsAPI with filtering and pagination
+- **Smart Todo Management**: User-specific task management with priority levels and real-time updates
+- **Account Management**: Email change functionality with complete data transfer and old account deletion
+
 [🚀 Live Demo](#) • [📖 Documentation](#) • [🐛 Report Bug](#) • [💡 Request Feature](#)
 
 </div>
@@ -36,35 +45,39 @@
 ## ✨ Features
 
 ### 🌦 **Real-Time Weather**
-- **Automatic Location Detection** - Uses browser geolocation API
-- **OpenWeatherMap Integration** - Real weather data from 200,000+ cities
-- **Location Accuracy Display** - Shows GPS accuracy in meters
-- **Manual City Search** - Fallback for location permission denied
-- **Weather Details** - Temperature, humidity, wind speed, conditions
-- **Beautiful Weather Icons** - Dynamic weather representation
+- **Automatic Location Detection** - Uses browser Geolocation API for precise GPS coordinates
+- **OpenWeatherMap Integration** - Real weather data from 200,000+ cities worldwide
+- **Location Accuracy Display** - Shows GPS accuracy in meters with color-coded indicators
+- **Manual City Search** - Fallback for location permission denied with city name lookup
+- **Weather Details** - Temperature, humidity, wind speed, conditions, feels like temperature
+- **Dynamic Weather Icons** - Beautiful weather representation using OpenWeatherMap icons
+- **Caching System** - Intelligent caching to reduce API calls and improve performance
 
 ### 📰 **Live News Feed**
-- **NewsAPI Integration** - Real-time news from global sources
+- **NewsAPI Integration** - Real-time news from global sources with proper source attribution
 - **Category Filtering** - Technology, Business, Sports, Entertainment, Health, Science, Politics
-- **Pagination Support** - Efficient loading with "Load More" functionality
-- **Responsive Grid Layout** - Optimized for all screen sizes
-- **Source Attribution** - Proper news source linking
-- **Caching System** - Reduces API calls and improves performance
+- **Pagination Support** - Efficient loading with "Load More" functionality and configurable page sizes
+- **Responsive Grid Layout** - Optimized for all screen sizes with hover effects
+- **Source Attribution** - Proper news source linking and metadata display
+- **Caching System** - Intelligent caching to reduce API calls and minimize costs
+- **Error Recovery** - Graceful fallbacks for API failures and network issues
 
 ### ✅ **Smart Todo Management**
-- **User-Specific Tasks** - Each user sees only their own todos
-- **Priority Levels** - LOW, MEDIUM, HIGH with color coding
-- **Real-time Updates** - Instant status changes and modifications
-- **Persistent Storage** - Data saved to database with user association
-- **Filter Options** - All, Active, Completed views
-- **Inline Editing** - Click to edit with keyboard shortcuts
+- **User-Specific Tasks** - Each user sees only their own todos with secure data isolation
+- **Priority Levels** - LOW, MEDIUM, HIGH with color coding and visual indicators
+- **Real-time Updates** - Instant status changes and modifications with optimistic UI updates
+- **Persistent Storage** - Data saved to MySQL database with user association and JPA/Hibernate
+- **Filter Options** - All, Active, Completed views with dynamic filtering
+- **Inline Editing** - Click to edit with keyboard shortcuts (Enter to save, Escape to cancel)
+- **CRUD Operations** - Full Create, Read, Update, Delete functionality with validation
 
 ### 🔐 **Advanced Authentication**
-- **JWT Token Security** - Secure, stateless authentication
-- **Email-Based Login** - Simple email-only authentication
-- **Account Management** - Email change with data transfer
-- **Session Persistence** - Automatic login restoration
-- **Protected Routes** - Secure access to user-specific data
+- **JWT Token Security** - Secure, stateless authentication with configurable expiration
+- **Email-Based Login** - Simple authentication using email addresses (no password required)
+- **Automatic Account Creation** - New accounts created on first login
+- **Account Management** - Email change with complete data transfer and old account deletion
+- **Session Persistence** - Automatic login restoration using localStorage
+- **Protected Routes** - Secure access to user-specific data with route protection
 
 ### 🎨 **Modern UI/UX**
 - **Responsive Design** - Works perfectly on mobile, tablet, and desktop
@@ -90,11 +103,11 @@
 ```
 
 ### **System Flow**
-1. **Frontend** - React SPA with TypeScript and Tailwind CSS
-2. **Backend** - Spring Boot REST API with JWT authentication
-3. **Database** - MySQL for persistent data storage
-4. **External APIs** - OpenWeatherMap and NewsAPI for real data
-5. **Caching** - Intelligent caching to reduce API calls
+1. **Frontend** - React SPA with TypeScript, Tailwind CSS, and browser APIs (Geolocation, localStorage)
+2. **Backend** - Spring Boot REST API with JWT authentication, Spring Security, and Spring Data JPA
+3. **Database** - MySQL for persistent data storage with automatic schema management
+4. **External APIs** - OpenWeatherMap (weather data) and NewsAPI (news articles) with intelligent caching
+5. **Caching** - Multi-level caching (database, application, browser) to reduce API calls and improve performance
 
 ---
 
@@ -170,19 +183,23 @@ Frontend runs on: `http://localhost:3000`
 |------------|---------|---------|
 | **React** | 19.0.0 | UI Framework |
 | **TypeScript** | 5.0.0 | Type Safety |
-| **Tailwind CSS** | 3.3.0 | Styling |
-| **React Router** | 6.8.0 | Navigation |
-| **Axios** | 1.4.0 | HTTP Client |
+| **Tailwind CSS** | 3.3.0 | Utility-First CSS Framework |
+| **React Router** | 6.8.0 | Client-Side Routing |
+| **Fetch API** | Native | HTTP Client |
+| **Geolocation API** | Native | Browser Location Services |
+| **localStorage** | Native | Client-Side Data Persistence |
 
 ### **Backend**
 | Technology | Version | Purpose |
 |------------|---------|---------|
-| **Spring Boot** | 3.5.5 | Framework |
-| **Spring Security** | 6.1.0 | Authentication |
-| **Spring Data JPA** | 3.1.0 | Database Access |
-| **MySQL** | 8.0.0 | Database |
-| **JWT** | 0.11.5 | Token Authentication |
+| **Spring Boot** | 3.5.5 | Main Framework |
+| **Spring Security** | 6.1.0 | Authentication & Authorization |
+| **Spring Data JPA** | 3.1.0 | Database Access Layer |
+| **MySQL** | 8.0.0 | Relational Database |
+| **JWT** | 0.11.5 | Token-Based Authentication |
 | **Lombok** | 1.18.26 | Code Generation |
+| **RestTemplate** | 6.1.0 | HTTP Client for External APIs |
+| **Maven** | 3.6+ | Build Tool & Dependency Management |
 
 ### **External APIs**
 | Service | Purpose | Rate Limit |
