@@ -2,11 +2,6 @@
 
 <div align="center">
 
-![Workable Logo](https://img.shields.io/badge/Workable-Dashboard-blue?style=for-the-badge&logo=react)
-![Spring Boot](https://img.shields.io/badge/Spring%20Boot-3.5.5-green?style=for-the-badge&logo=spring)
-![React](https://img.shields.io/badge/React-19-blue?style=for-the-badge&logo=react)
-![TypeScript](https://img.shields.io/badge/TypeScript-5.0-blue?style=for-the-badge&logo=typescript)
-
 **A modern, full-stack dashboard application with real-time weather, news, and task management**
 
 ### About
@@ -21,24 +16,6 @@ A web application with a Spring Boot backend and MySQL database. Features includ
 [🚀 Live Demo](#) • [📖 Documentation](#) • [🐛 Report Bug](#) • [💡 Request Feature](#)
 
 </div>
-
----
-
-## 📋 Table of Contents
-
-- [✨ Features](#-features)
-- [🏗 Architecture](#-architecture)
-- [🚀 Quick Start](#-quick-start)
-- [🛠 Tech Stack](#-tech-stack)
-- [📁 Project Structure](#-project-structure)
-- [🔧 Configuration](#-configuration)
-- [📚 API Documentation](#-api-documentation)
-- [🎨 UI/UX Features](#-uiux-features)
-- [🔒 Security](#-security)
-- [🧪 Testing](#-testing)
-- [🚀 Deployment](#-deployment)
-- [🤝 Contributing](#-contributing)
-- [📄 License](#-license)
 
 ---
 
